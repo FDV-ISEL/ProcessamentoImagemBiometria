@@ -1,0 +1,17 @@
+a) Identify the types of noise/distortion; propose a technique to restore it to its
+original contents. Explain the proposed technique
+
+Image: type of noise
+
+face: Gaussian
+face_thermogram: Salt and pepper
+finger: Periodic
+iris: Film grain
+squares: Salt and pepper
+XRay: Quantization
+
+Techniques:
+
+Gaussian: Unsharp masking
+Salt and pepper: Non-linear spatial filtering / median filter
+Periodic: Frequency domain notch filters
