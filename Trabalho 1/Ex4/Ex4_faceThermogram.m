@@ -4,13 +4,16 @@ handler = ImageHandler('../NoisyImages/');
 
 
 original = handler.readImage('face_thermogram.png');
-noisy = handler.readImage('face_thermogram_1.png');
+noisy = handler.readImage('face_thermogram_4.png');
 
 
 improved = medfilt2(noisy);
 
+% utilizar com as imagens _2 e _4
+improved = imhistmatch(improved, original);
 
-handler.show(original, noisy, improved);
+
+handler.show(1, original, noisy, improved);
 handler.brightness(original, noisy, improved);
 handler.contrast(original, noisy, improved);
 handler.entropy(original, noisy, improved);

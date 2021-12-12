@@ -4,13 +4,13 @@ handler = ImageHandler('../NoisyImages/');
 
 
 original = handler.readImage('iris.png');
-noisy = handler.readImage('iris_1.png');
+noisy = handler.readImage('iris_4.png');
 
 
-improved = medfilt2(noisy);
+improved = medfilt2(noisy, [7 7]);
 
 
-handler.show(original, noisy, improved);
+handler.show(1, original, noisy, improved);
 handler.brightness(original, noisy, improved);
 handler.contrast(original, noisy, improved);
 handler.entropy(original, noisy, improved);

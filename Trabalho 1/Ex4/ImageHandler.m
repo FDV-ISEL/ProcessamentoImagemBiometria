@@ -16,14 +16,14 @@ classdef ImageHandler
     
     methods (Static)
         
-        function show(original, noisy, improved)
-            figure(1)
+        function show(figureNumber, original, noisy, improved)
+            figure(figureNumber)
             imshow(original)
 
-            figure(2)
+            figure(figureNumber + 1)
             imshow(noisy)
 
-            figure(3)
+            figure(figureNumber + 2)
             imshow(improved)
         end
         

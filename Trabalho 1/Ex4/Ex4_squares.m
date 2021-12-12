@@ -1,24 +1,29 @@
 function Ex4_squares()
 
-% TODO Erro aumenta nesta ._.
-% TODO Não consigo calcular MSE nem MAE
-% Problemas acima ^ devem-se à rotação da imagem que aumenta os pixeis preto (aumenta o erro)
-% e modifica as dimensões da imagem (impossível calcular MSE e MAE) 
-
 handler = ImageHandler('../NoisyImages/');
 
 
 original = handler.readImage('squares.gif');
-noisy = handler.readImage('squares_1.gif');
+noisy = handler.readImage('squares_4.gif');
 
-improved = medfilt2(noisy);
+angle = -20;
 
-handler.show(original, noisy, improved);
+rotated = imrotate(noisy, angle);
+
+cropSize = (size(rotated, 1) - size(original, 1)) / 2;
+cropped = rotated(cropSize+1:end-cropSize, cropSize+1:end-cropSize);
+
+improved = medfilt2(255 - cropped);
+
+handler.show(1, original, noisy, improved);
 handler.brightness(original, noisy, improved);
 handler.contrast(original, noisy, improved);
 handler.entropy(original, noisy, improved);
-% must have the same size to calculate mse and mae
-% handler.mse(original, noisy, improved);
-% handler.mae(original, noisy, improved);
+
+disp("MSE original - improved: ")
+disp(immse(original, improved))
+
+disp("MAE original - improved: ")
+disp(mae(original - improved))
 
 end
