@@ -1,6 +1,17 @@
 function exercise3c()
 
-image = imread('GrayscaleImages/bird.png');
+%imageName = 'bird.png';
+%imageName = 'bubbles.png';
+%imageName = 'CT.jpg';
+%imageName = 'finger.png';
+%imageName = 'iris.png';
+%imageName = 'MR.jpg';
+%imageName = 'PET.png';
+imageName = 'Sat.png';
+
+path = strcat('../GrayscaleImages/', imageName);
+
+image = imread(path);
 
 I = histeq(image);
 
@@ -19,6 +30,9 @@ imhist(I)
 C = imhistmatch(image, I);
 figure(5)
 imshow(C)
+
+figure(6)
+imhist(C)
 
 
 end

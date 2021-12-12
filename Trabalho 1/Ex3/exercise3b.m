@@ -1,6 +1,17 @@
 function exercise3b()
 
-image = imread('GrayscaleImages/bird.png');
+%imageName = 'bird.png';
+%imageName = 'bubbles.png';
+%imageName = 'CT.jpg';
+%imageName = 'finger.png';
+%imageName = 'iris.png';
+%imageName = 'MR.jpg';
+%imageName = 'PET.png';
+imageName = 'Sat.png';
+
+path = strcat('../GrayscaleImages/', imageName);
+
+image = imread(path);
 
 outAdjust = imadjust(image, [0.2 0.8], []);
 
@@ -18,17 +29,17 @@ imhist(outAdjust)
 
 brigthness_outAdjust = mean2(outAdjust);
 
-disp("Brightness outAdjust: ")
+disp("Brilho: ")
 disp(brigthness_outAdjust)
 
 outAdjust_constrast = max(outAdjust(:)) - min(outAdjust(:));
 
-disp("Contrast outAdjust: ")
+disp("Contraste: ")
 disp(outAdjust_constrast)
 
 H_outAdjust = entropy(outAdjust);
 
-disp("Entropy outAdjust: ")
+disp("Entropia: ")
 disp(H_outAdjust)
 
 end
